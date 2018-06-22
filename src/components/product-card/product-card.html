@@ -9,5 +9,8 @@
     <p *ngIf="description">
       {{ description }}
     </p>
+    <ion-row justify-content-end>
+      <button ion-button color="secondary" [disabled]="!quantity">Comprar</button>
+    </ion-row>
   </ion-card-content>
 </ion-card>
