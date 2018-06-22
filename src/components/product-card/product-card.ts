@@ -9,7 +9,7 @@ export class ProductCardComponent {
   @Input() id: number;
   @Input() title: string;
   @Input() description: string;
-  @Input() quatity: number;
+  @Input() quantity: number;
   @Input() price: number;
   @Input() image: string;
 
