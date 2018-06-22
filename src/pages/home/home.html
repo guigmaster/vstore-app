@@ -7,5 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-  <product-card></product-card>
+  <product-card *ngFor="let product of productList"
+    [id]="product.id"
+    [title]="product.title"
+    [description]="product.description"
+    [quantity]="product.quantity"
+    [price]="product.price"></product-card>
 </ion-content>
