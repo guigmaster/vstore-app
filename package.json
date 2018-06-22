@@ -1,8 +1,8 @@
 {
-  "name": "app",
+  "name": "vstore-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "description": "A ionic mobile app for vstore",
+  "author": "Guilherme Silva <guisilva.master@gmail.com>",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -37,6 +37,5 @@
     "@ionic/app-scripts": "3.1.10",
     "husky": "0.14.3",
     "typescript": "~2.6.2"
-  },
-  "description": "An Ionic project"
+  }
 }
