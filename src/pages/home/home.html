@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      VStore
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <product-card *ngFor="let product of productList"
+    [id]="product.pro_id"
+    [title]="product.pro_name"
+    [description]="product.pro_description"
+    [quantity]="product.pro_quantity"
+    [price]="product.pro_price"
+    [image]="product.pro_image"
+    (onProductBuy)="buyProduct(product)"></product-card>
+</ion-content>
