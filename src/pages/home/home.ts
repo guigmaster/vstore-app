@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { range } from 'lodash';
+
+import { ProductServiceProvider } from '../../providers/product-service/product-service'
 
 @Component({
   selector: 'page-home',
@@ -10,16 +11,12 @@ export class HomePage {
 
   productList: any[]
 
-  constructor(public navCtrl: NavController) {
-    this.productList = range(0, 10).map(i => {
-      return {
-        id: i,
-        title: `Produto ${i}`,
-        description: `Produto ${i} descrição`,
-        quantity: (i * 10),
-        price: i+ 1 * 10
-      }
-    })
+  constructor(public navCtrl: NavController, public productService: ProductServiceProvider) {
+    this.getProducts()
+  }
+
+  getProducts() {
+    this.productService.getAllProducts().subscribe(response => this.productList = response.products)
   }
 
 }
