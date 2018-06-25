@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { ENV } from '../../environments/environment'
 import { ProductServiceProvider } from '../../providers/product-service/product-service'
@@ -13,7 +13,7 @@ export class HomePage {
   private productList: any[];
   private url: String = ENV.API_URL;
 
-  constructor(public navCtrl: NavController, public productService: ProductServiceProvider) {
+  constructor(public navCtrl: NavController, public productService: ProductServiceProvider, public alertCtrl: AlertController) {
     this.getProducts();
   }
 
@@ -30,7 +30,16 @@ export class HomePage {
       pro_quantity: (product.pro_quantity - 1)
     }
 
-    this.productService.buyProduct(product.pro_id, payload).subscribe(response => this.getProducts())
+    const alert = this.alertCtrl.create({
+      title: 'Sucesso!',
+      subTitle: `Produto comprado com sucesso, nova quantidade ${(product.pro_quantity - 1) } de ${product.pro_quantity}`,
+      buttons: ['OK']
+    });
+
+    this.productService.buyProduct(product.pro_id, payload).subscribe(response => {
+      alert.present();
+      this.getProducts();
+    })
   }
 
 }
