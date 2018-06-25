@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ENV } from '../../environments/environment'
 import { ProductServiceProvider } from '../../providers/product-service/product-service'
 
 @Component({
@@ -9,14 +10,19 @@ import { ProductServiceProvider } from '../../providers/product-service/product-
 })
 export class HomePage {
 
-  productList: any[]
+  private productList: any[];
+  private url: String = ENV.API_URL;
 
   constructor(public navCtrl: NavController, public productService: ProductServiceProvider) {
-    this.getProducts()
+    this.getProducts();
   }
 
   getProducts() {
-    this.productService.getAllProducts().subscribe(response => this.productList = response.products)
+    this.productService.getAllProducts().subscribe(response => this.productList = response.products.map((item) => {
+      return item.pro_image
+        ? { ...item, pro_image: `${this.url}/${item.pro_image}` }
+        : { ...item }
+    }));
   }
 
 }
