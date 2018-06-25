@@ -13,5 +13,6 @@
     [description]="product.pro_description"
     [quantity]="product.pro_quantity"
     [price]="product.pro_price"
-    [image]="product.pro_image"></product-card>
+    [image]="product.pro_image"
+    (onProductBuy)="buyProduct(product)"></product-card>
 </ion-content>

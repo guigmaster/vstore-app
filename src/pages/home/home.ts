@@ -25,4 +25,8 @@ export class HomePage {
     }));
   }
 
+  buyProduct(product) {
+    console.log(product);
+  }
+
 }
