@@ -8,9 +8,11 @@
 
 <ion-content padding>
   <product-card *ngFor="let product of productList"
-    [id]="product.id"
-    [title]="product.title"
-    [description]="product.description"
-    [quantity]="product.quantity"
-    [price]="product.price"></product-card>
+    [id]="product.pro_id"
+    [title]="product.pro_name"
+    [description]="product.pro_description"
+    [quantity]="product.pro_quantity"
+    [price]="product.pro_price"
+    [image]="product.pro_image"
+    (onProductBuy)="buyProduct(product)"></product-card>
 </ion-content>

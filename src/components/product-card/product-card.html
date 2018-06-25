@@ -2,15 +2,17 @@
   <img [src]="image || 'http://via.placeholder.com/500x380?text=sem%20image'" />
   <ion-card-content>
     <ion-card-title>
-      {{ title }}
-      <p>R$ {{ price }}</p>
+      {{ title | slice:0:12 }} ...
+      <p>{{ price | currency:'BRL' }}</p>
       <p>Qtd: {{ quantity }}</p>
     </ion-card-title>
     <p *ngIf="description">
-      {{ description }}
+      {{ description | slice:0:50 }} ...
     </p>
     <ion-row justify-content-end>
-      <button ion-button color="secondary" [disabled]="!quantity">Comprar</button>
+      <button ion-button color="secondary"
+        [disabled]="!quantity"
+        (click)="buyProduct()">Comprar</button>
     </ion-row>
   </ion-card-content>
 </ion-card>
