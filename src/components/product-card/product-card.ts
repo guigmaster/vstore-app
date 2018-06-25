@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'product-card',
@@ -13,8 +13,13 @@ export class ProductCardComponent {
   @Input() price: number;
   @Input() image: string;
 
-  constructor() {
+  @Output() onProductBuy: EventEmitter<any> = new EventEmitter();
 
+  constructor() {
+  }
+
+  buyProduct(): void {
+    this.onProductBuy.emit();
   }
 
 }

@@ -10,7 +10,9 @@
       {{ description | slice:0:50 }} ...
     </p>
     <ion-row justify-content-end>
-      <button ion-button color="secondary" [disabled]="!quantity">Comprar</button>
+      <button ion-button color="secondary"
+        [disabled]="!quantity"
+        (click)="buyProduct()">Comprar</button>
     </ion-row>
   </ion-card-content>
 </ion-card>
