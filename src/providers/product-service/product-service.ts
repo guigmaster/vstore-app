@@ -15,4 +15,8 @@ export class ProductServiceProvider {
     return this.http.get(this.url +'/products');
   }
 
+  buyProduct(id: number, payload: Object): Observable<any> {
+    return this.http.put(this.url +'/products/' + id, payload);
+  }
+
 };

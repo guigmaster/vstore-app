@@ -17,7 +17,7 @@ export class HomePage {
     this.getProducts();
   }
 
-  getProducts() {
+  getProducts(): void {
     this.productService.getAllProducts().subscribe(response => this.productList = response.products.map((item) => {
       return item.pro_image
         ? { ...item, pro_image: `${this.url}/${item.pro_image}` }
@@ -25,8 +25,12 @@ export class HomePage {
     }));
   }
 
-  buyProduct(product) {
-    console.log(product);
+  buyProduct(product) : void {
+    const payload : Object = {
+      pro_quantity: (product.pro_quantity - 1)
+    }
+
+    this.productService.buyProduct(product.pro_id, payload).subscribe(response => this.getProducts())
   }
 
 }
