@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
-/*
-  Generated class for the ProductServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+import { ENV } from '../../environments/environment'
 @Injectable()
 export class ProductServiceProvider {
 
+  private url: String = ENV.API_URL;
+
   constructor(public http: HttpClient) {
-    console.log('Hello ProductServiceProvider Provider');
   }
 
-}
+  getAllProducts(): Observable<any> {
+    return this.http.get(this.url +'/products');
+  }
+
+};
